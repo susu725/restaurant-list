@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-4">
     <div class="col-md-10 mx-auto">
         <div class="row row-cols-sm-3">
             {{#each restaurants}}
@@ -19,7 +19,7 @@
                     <a href="/restaurants/{{this.id}}" class="text-decoration-none ms-1">
                         <button type="button" class="btn btn-secondary">Detail</button>
                     </a>
-                    <a href="/restaurant/{{this.id}}" class="text-decoration-none ms-1">
+                    <a href="/restaurants/{{this.id}}/edit" class="text-decoration-none ms-1">
                         <button type="button" class="btn btn-secondary">Edit</button>
                     </a>
                     <a href="/restaurant/{{this.id}}" class="text-decoration-none ms-1">
