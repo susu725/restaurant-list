@@ -3,6 +3,20 @@ const router = express.Router()
 
 const Restaurant = require('../../models/restaurant')
 
+// 新增
+router.get('/create', (req, res) => {
+    return res.render('create')
+})
+
+router.post('/', (req, res) => {
+    const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
+    return Restaurant.find()
+        .estimatedDocumentCount()
+        .then(count => Restaurant.create({ id: count + 1, name, name_en, category, image, location, phone, google_map, rating, description }))
+        .then(() => res.redirect('/'))
+        .catch(err => console.log(err))
+})
+
 // 瀏覽
 router.get('/:id', (req, res) => {
     const { id } = req.params
