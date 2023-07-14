@@ -25,9 +25,9 @@
                     <a href="/restaurants/{{this.id}}/edit" class="text-decoration-none ms-1">
                         <button type="button" class="btn btn-secondary">Edit</button>
                     </a>
-                    <a href="/restaurant/{{this.id}}" class="text-decoration-none ms-1">
-                        <button type="button" class="btn btn-danger">Delete</button>
-                    </a>
+                    <form action="/restaurants/{{this.id}}?_method=DELETE" method="POST" class="ms-1">
+                        <button type="sumbit" class="btn btn-danger">Delete</button>
+                    </form>
                 </div>
             </div>
             {{/each}}

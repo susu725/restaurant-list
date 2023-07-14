@@ -17,6 +17,15 @@ router.post('/', (req, res) => {
         .catch(err => console.log(err))
 })
 
+// 刪除
+router.delete('/:id', (req, res) => {
+    const { id } = req.params
+    Restaurant.findOne({ id })
+        .then(restaurant => restaurant.remove())
+        .then(() => res.redirect('/'))
+        .catch(err => console.log(err))
+})
+
 // 瀏覽
 router.get('/:id', (req, res) => {
     const { id } = req.params
