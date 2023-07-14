@@ -1,0 +1,33 @@
+<div class="container mt-5">
+    <div class="col-md-10 mx-auto">
+        <div class="row row-cols-sm-3">
+            {{#each restaurants}}
+            <div class="mb-5">
+                <a href="/restaurants/{{this.id}}" class="text-decoration-none">
+                    <div class="mb-3">
+                        <div class="card">
+                            <img src={{this.image}} class="card-img-top" alt={{this.name}}>
+                            <div class="card-body lh-1">
+                                <p class="text-decoration-underline">{{this.name}}</p>
+                                <p>{{this.category}}</p>
+                                <div class="badge bg-danger text-wrap" style="width: 2.2rem;">{{this.rating}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <div class="d-flex justify-content-end mb-3">
+                    <a href="/restaurant/{{this.id}}" class="text-decoration-none ms-1">
+                        <button type="button" class="btn btn-secondary">Detail</button>
+                    </a>
+                    <a href="/restaurant/{{this.id}}" class="text-decoration-none ms-1">
+                        <button type="button" class="btn btn-secondary">Edit</button>
+                    </a>
+                    <a href="/restaurant/{{this.id}}" class="text-decoration-none ms-1">
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </a>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
