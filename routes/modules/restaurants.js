@@ -9,18 +9,20 @@ router.get('/create', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+    const userId = req.user._id
     const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
     return Restaurant.find()
         .estimatedDocumentCount()
-        .then(count => Restaurant.create({ id: count + 1, name, name_en, category, image, location, phone, google_map, rating, description }))
+        .then(count => Restaurant.create({ id: count + 1, name, name_en, category, image, location, phone, google_map, rating, description, userId }))
         .then(() => res.redirect('/'))
         .catch(err => console.log(err))
 })
 
 // 刪除
 router.delete('/:id', (req, res) => {
+    const userId = req.user._id
     const { id } = req.params
-    Restaurant.findOne({ id })
+    Restaurant.findOne({ id, userId })
         .then(restaurant => restaurant.remove())
         .then(() => res.redirect('/'))
         .catch(err => console.log(err))
@@ -28,8 +30,9 @@ router.delete('/:id', (req, res) => {
 
 // 瀏覽
 router.get('/:id', (req, res) => {
+    const userId = req.user._id
     const { id } = req.params
-    return Restaurant.findOne({ id })
+    return Restaurant.findOne({ id, userId })
         .lean()
         .then(restaurant => res.render('detail', { restaurant }))
         .catch(err => console.log(err))
@@ -37,17 +40,19 @@ router.get('/:id', (req, res) => {
 
 // 編輯
 router.get('/:id/edit', (req, res) => {
+    const userId = req.user._id
     const { id } = req.params
-    return Restaurant.findOne({ id })
+    return Restaurant.findOne({ id, userId })
         .lean()
         .then(restaurant => res.render('edit', { restaurant }))
         .catch(err => console.log(err))
 })
 
 router.put('/:id', (req, res) => {
+    const userId = req.user._id
     const { id } = req.params
     const info = req.body
-    return Restaurant.updateOne({ id: id }, info)
+    return Restaurant.findOneAndUpdate({ id, userId }, info)
         .then(() => res.redirect('/'))
         .catch(err => console.log(err))
 })
