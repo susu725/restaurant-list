@@ -52,7 +52,7 @@ router.put('/:id', (req, res) => {
     const userId = req.user._id
     const { id } = req.params
     const info = req.body
-    return Restaurant.findOneAndUpdate({ id, userId }, info)
+    return Restaurant.updateOne({ id, userId }, info)
         .then(() => res.redirect('/'))
         .catch(err => console.log(err))
 })
