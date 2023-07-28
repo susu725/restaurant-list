@@ -17,11 +17,16 @@
 1. 請確認本地端已安裝 Node.js 和 npm
 2. 將此專案clone到本地端
 3. 安裝相關套件
+```
 npm install
-4. 參考env.example建立.env
-5. 資料庫連線完成後新增種子資料
+```
+5. 參考env.example建立.env
+6. 資料庫連線完成後新增種子資料
+```
 npm run seed
+```
 此步驟將產生兩組用戶資料
+```
 1. 用戶一
 email user1@example.com
 password 12345678
@@ -29,10 +34,15 @@ password 12345678
 2. 用戶二
 email user2@example.com
 password 12345678
+```
 6. 運行專案
+```
 npm run start
+```
 若有安裝nodemon可使用以下指令運行專案
+```
 npm run dev
+```
 
 ## 開發工具
 + bcryptjs 2.4.3
