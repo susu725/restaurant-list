@@ -14,11 +14,11 @@ module.exports = app => {
     passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
         User.findOne({ email }).then(user => {
             if (!user) {
-                done(null, false, { message: '用戶不存在！' })
+                return done(null, false, { message: '用戶不存在！' })
             }
             return bcrypt.compare(password, user.password).then(isMatch => {
                 if (!isMatch) {
-                    done(null, false, { message: '密碼錯誤！' })
+                    return done(null, false, { message: '密碼錯誤！' })
                 }
                 return done(null, user)
             })
