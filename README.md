@@ -20,7 +20,7 @@
 ```
 npm install
 ```
-5. 參考env.example建立.env
+5. 參考 env.example 建立 .env
 6. 資料庫連線完成後新增種子資料
 ```
 npm run seed
